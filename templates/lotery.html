@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+          <link rel="stylesheet" href="/static/css/style.css">
+          <link rel="stylesheet" href="/static/css/menu.css">
+          <link rel="stylesheet" href="/static/css/loteries.css">
+          <link rel="icon" href="/static/icon/favicon.ico" type="image/x-icon">
+          <meta charset="UTF-8">
+        <style>
+            .main .conteiner h2{
+                font-size: 40px;
+            }
+            .main .conteiner label{
+                font-size: 40px;
+                color: #B1A6B1;
+                white-space: pre-line;
+                overflow-wrap: break-word;
+                margin: 10px;
+                max-width: 1200px;
+            }
+            .main .conteiner div{
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+            }
+            .image{
+                margin: 10px;
+                border-radius: 10px;
+            }
+        </style>
+  <title>{{lotery.name}}</title>
+    </head>
+    <body>
+        <div class="background"></div>
+  <div clas="all">
+    <header class="header">
+      <div class="bg-header"></div>
+      <w>ChillGame</w>
+      <a class="menu-toggle" id="menuToggle">☰</a>
+    </header>
+    <nav class="side-menu" id="sideMenu">
+        <!-- Кнопка закрытия внутри меню -->
+        <a class="close-menu" id="closeMenu">✖</a>
+        <!-- Заголовок меню -->
+        <div class="menu-header">
+            <h2>Навигация</h2>
+        </div>
+        <!-- Пункты меню -->
+        <ul class="menu-list">
+            <li>
+                <a href="{{ url_for('index')}}" class="menu-item">
+                    <span>Главная</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('profile')}}" class="menu-item">
+                    <span>Профиль</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('loteries')}}" class="menu-item">
+                    <span>Розыгрыши</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="menu-item">
+                    <span>Галерея</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="menu-item">
+                    <span>Контакты</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="menu-item">
+                    <span>Помощь</span>
+                </a>
+            </li>
+        </ul>
+        <!-- Нижняя часть меню -->
+        <div class="menu-footer">
+            <div class="user-info">
+                <div>
+                    <span class="user-name">{{Login}}</span>
+                    {% if is_admin %}
+                    <span class="user-status-admin">Администратор</span>
+                    {% else %}
+                    <span class="user-status-user">Пользователь</span>
+                    {% endif %}
+                </div>
+            </div>
+            <a href="{{url_for('logout')}}"><button class="logout-btn">Выйти</button></a>
+        </div>
+    </nav>
+    <div class="overlay" id="overlay"></div>
+      <main class="main">
+          <div class="conteiner">
+          <div>
+            <img src="{{ url_for('static', filename='images/' + lotery.name + '.jpg') }}"
+                           class="image"
+                           onerror="this.src='{{ url_for('static', filename='images/none.jpg') }}'">
+            <h1>{{lotery['name']}}</h1>
+          </div>
+          <h2>Номер розыгрыша {{lotery['number']}}</h2>
+          {% if lotery['winner'] == 'none' %}
+              <label>Победитель не определен</label>
+          {% else %}
+              <label>Победитель {{lotery.winner}}</label>
+          {% endif %}
+          <label></label>
+          <label>{{lotery.content}}</label>
+          </div>
+          <div class="conteiner">
+              <h2>Участники</h2>
+              {% if lotery['participants'] == 'none' %}
+                <label>нет участников</label>
+              {% else %}
+                <label>{{lotery.participants}}</label>
+              {% endif %}
+          </div>
+      </main>
+      </div>
+    <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+    </body>
+</html>

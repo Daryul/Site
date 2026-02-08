@@ -1,0 +1,27 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 50%;
+    position: fixed;
+    top: 25%;
+    left: 35%;
+    border-radius: 25px;
+    backdrop-filter: blur(30px);
+}
+.main label{
+    font-size: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.8);
+}
+.main a{
+    font-size: 40px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

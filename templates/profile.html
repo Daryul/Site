@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+          <link rel="stylesheet" href="/static/css/style.css">
+          <link rel="stylesheet" href="/static/css/menu.css">
+                <link rel="stylesheet" href="/static/css/loteries.css">
+          <link rel="icon" href="/static/icon/favicon.ico" type="image/x-icon">
+          <meta charset="UTF-8">
+        <style>
+            .main label{
+            color: #460161;
+            font-size: 50px;
+            margin: 10px;
+            }
+        </style>
+  <title>Profile {{Login}}</title>
+    </head>
+    <body>
+        <div class="background"></div>
+  <div clas="all">
+    <header class="header">
+      <div class="bg-header"></div>
+      <w>ChillGame</w>
+      <a class="menu-toggle" id="menuToggle">☰</a>
+    </header>
+    <nav class="side-menu" id="sideMenu">
+        <!-- Кнопка закрытия внутри меню -->
+        <a class="close-menu" id="closeMenu">✖</a>
+        <!-- Заголовок меню -->
+        <div class="menu-header">
+            <h2>Навигация</h2>
+        </div>
+        <!-- Пункты меню -->
+        <ul class="menu-list">
+            <li>
+                <a href="{{ url_for('index')}}" class="menu-item">
+                    <span>Главная</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="menu-item">
+                    <span>Профиль</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('loteries')}}" class="menu-item">
+                    <span>Розыгрыши</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="menu-item">
+                    <span>Галерея</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="menu-item">
+                    <span>Контакты</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="menu-item">
+                    <span>Помощь</span>
+                </a>
+            </li>
+        </ul>
+        <!-- Нижняя часть меню -->
+        <div class="menu-footer">
+            <div class="user-info">
+                <div>
+                    <span class="user-name">{{Login}}</span>
+                    {% if is_admin %}
+                    <span class="user-status-admin">Администратор</span>
+                    {% else %}
+                    <span class="user-status-user">Пользователь</span>
+                    {% endif %}
+                </div>
+            </div>
+            <a href="{{url_for('logout')}}"><button class="logout-btn">Выйти</button></a>
+        </div>
+    </nav>
+    <div class="overlay" id="overlay"></div>
+      <main class="main">
+          <div class="conteiner">
+              <label>Логин: {{Login}}</label>
+              <label>{% if is_admin %}Статус: администратор{% else %}Статус: пользователь{% endif %}</label>
+          </div>
+          <div class="conteiner">
+              <h2>Участвовал в</h2>
+              <ul class="participation">
+                  {% for lotery in lotteries %}
+                  {% if Login in lotery['participants'] %}
+                  <li>
+                      <img src="{{ url_for('static', filename='images/' + lotery.name + '.jpg') }}"
+                           class="image"
+                           onerror="this.src='{{ url_for('static', filename='images/none.jpg') }}'">
+                      <div>
+                      <a class="participation-item" href="{{url_for('get_lotery', lotery_number=lotery['number'])}}">{{lotery['name']}}</a>
+                      <p class="participation-item-content">{{lotery['content']}}</p>
+                      </div>
+                  </li>
+                  {% endif %}
+                  {% endfor %}
+              </ul>
+          </div>
+          <div class="conteiner">
+              <h2>Победил в</h2>
+              <ul class="participation">
+                  {% for lotery in lotteries %}
+                  {% if Login in lotery['participants'] and Login in lotery['winner'] %}
+                  <li>
+                      <img src="{{ url_for('static', filename='images/' + lotery.name + '.jpg') }}"
+                           class="image"
+                           onerror="this.src='{{ url_for('static', filename='images/none.jpg') }}'">
+                      <div>
+                      <a class="participation-item" href="{{url_for('get_lotery', lotery_number=lotery['number'])}}">{{lotery['name']}}</a>
+                      <p class="participation-item-content">{{lotery['content']}}</p>
+                      </div>
+                  </li>
+                  {% endif %}
+                  {% endfor %}
+              </ul>
+          </div>
+      </main>
+      </div>
+    <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+    </body>
+</html>

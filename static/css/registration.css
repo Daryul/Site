@@ -1,0 +1,39 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 50%;
+    position: fixed;
+    top: 25%;
+    left: 35%;
+    border-radius: 25px;
+    backdrop-filter: blur(30px);
+}
+.main label{
+    margin: 10px;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.8);
+}
+.main label[for=Login]{
+    margin: 10% 0 10px 0;
+}
+.main input{
+    text-aling: center;
+    width: 50%;
+    margin: 0 25%;
+    font-size: 25px;
+}
+.main button{
+    background: none;
+    border: none;
+    width: 70%;
+    margin: 10px 15%;
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.8);
+}
+.main button:hover{
+    background: black;
+    border-radius: 10px;
+}

@@ -1,0 +1,104 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 90%;
+    margin-top: 1%;
+    margin-left: 10px;
+}
+.main .conteiner{
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(30px);
+    border-radius: 25px;
+    width: 90%;
+    border: 2px solid #180021;
+}
+.main .conteiner h2{
+    margin: 10px 0 0px 10px;
+    color: #460161;
+}
+.main .conteiner h1{
+    margin: 10px 0 0px 10px;
+    color: #460161;
+}
+.main a{
+    text-decoration: none;
+    margin: 10px 0 0px 10px;
+    color: #6602A6;
+}
+.main .participation-item-content{
+    color: #B1A6B1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 20px;
+    margin: 10px 10px 10px 10px;
+    max-height: 120px;
+    width: 800px;
+    white-space: pre-wrap;
+}
+.main .button_a{
+    width: 500px;
+    font-size: 20px;
+    color: #B1A6B1;
+    font-family: "Russo One", sans-serif;
+}
+.main button{
+    width: 500px;
+    font: 50px;
+    backdrop-filter: blur(25px);
+    background: none;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #B1A6B1;
+    font-family: "Russo One", sans-serif;
+
+}
+.image{
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+.main ul{
+    list-style: none;
+}
+.main li{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    border-top: 2px solid #180021;
+    border-bottom: 2px solid #180021;
+    margin: 5px 0 5px 0;
+    padding: 5px 0 5px 0;
+}
+.form_new_lotery{
+    display: flex;
+    flex-direction: column;
+}
+.form_new_lotery label{
+    color: #460161;
+    font-size: 50px;
+    margin: 10px;
+}
+.form_new_lotery input{
+    margin: 10px;
+    width: 500px;
+    border-radius: 8px;
+}
+.form_new_lotery textarea{
+    margin: 10px;
+    width: 500px;
+    height: 50px;
+    border-radius: 12px;
+}
+.form_new_lotery button{
+    margin: 10px;
+    width: 500px;
+    height: 50px;
+}
+.form_new_lotery button a{
+    font-size: 30px;
+    color: #B1A6B1;
+    font-family: "Russo One", sans-serif;
+}

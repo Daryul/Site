@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="stylesheet" href="/static/css/menu.css">
+        <link rel="stylesheet" href="/static/css/loteries.css">
+        <link rel="icon" href="/static/icon/favicon.ico" type="image/x-icon">
+        <meta charset="UTF-8">
+  <title>New</title>
+    </head>
+    <body>
+        <div class="background"></div>
+  <div clas="all">
+    <header class="header">
+      <div class="bg-header"></div>
+      <w>ChillGame</w>
+      <a class="menu-toggle" id="menuToggle">☰</a>
+    </header>
+    <nav class="side-menu" id="sideMenu">
+        <!-- Кнопка закрытия внутри меню -->
+        <a class="close-menu" id="closeMenu">✖</a>
+        <!-- Заголовок меню -->
+        <div class="menu-header">
+            <h2>Навигация</h2>
+        </div>
+        <!-- Пункты меню -->
+        <ul class="menu-list">
+            <li>
+                <a href="{{ url_for('index')}}" class="menu-item">
+                    <span>Главная</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('profile')}}" class="menu-item">
+                    <span>Профиль</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('loteries')}}" class="menu-item">
+                    <span>Розыгрыши</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="menu-item">
+                    <span>Галерея</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="menu-item">
+                    <span>Контакты</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="menu-item">
+                    <span>Помощь</span>
+                </a>
+            </li>
+        </ul>
+        <!-- Нижняя часть меню -->
+        <div class="menu-footer">
+            <div class="user-info">
+                <div>
+                    <span class="user-name">{{Login}}</span>
+                    {% if is_admin %}
+                    <span class="user-status-admin">Администратор</span>
+                    {% else %}
+                    <span class="user-status-user">Пользователь</span>
+                    {% endif %}
+                </div>
+            </div>
+            <a href="{{url_for('logout')}}"><button class="logout-btn">Выйти</button></a>
+        </div>
+    </nav>
+    <div class="overlay" id="overlay"></div>
+      <main class="main">
+          <div class="conteiner">
+              <form class="form_new_lotery" method="POST">
+                  <label for="news_name">Название</label>
+                  <input type="text" placeholder="" name="news_name" required>
+                  <label for="news_content">Описание</label>
+                  <textarea id="content" name="news_content"></textarea>
+                  <button type="submit">Опубликовать</button>
+              </form>
+          </div>
+      </main>
+  </div>
+    <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+html{
+    font-size: 40px;
+    font-family: "Russo One", sans-serif;
+}
+body{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    position: relative;
+    background-color: #151128;
+}
+.background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/static/assets/background.jpg');
+    z-index: -1;
+    filter: blur(15px) brightness(0.8) contrast(0.9) contrast(1.1);
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+.bg-header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    z-index: -1;
+    background: #1A0818;
+    opacity: 0.7;
+}
+w {
+    margin: 20px 10px ;
+    font-size: 60px;
+}
